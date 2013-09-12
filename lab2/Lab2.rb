@@ -1,3 +1,5 @@
+#Jeffrey Gunderson
+
 # Part1: Hello World
 class HelloWorldClass
     def initialize(name)
@@ -9,25 +11,25 @@ class HelloWorldClass
 end
 
 def palindrome?(string)
-  # your code here
+
   string = string.gsub(/[^a-zA-Z]/, '')
   string = string.downcase
   if (string === string.reverse)
-    puts "true"
+    return true
   else
-    puts "false"
+    return false
   end
 end
 
 def count_words(string)
-  # your code here
+
   string = string.gsub(/[^a-zA-Z ]/, '')
   string = string.downcase
   words = string.split
   hashWord = Hash.new
   words.each {|word|
     if(hashWord.has_key?(word))
-      hashWord[word] = array[word] + 1
+      hashWord[word] = hashWord[word] + 1
     else
       hashWord[word] = 1
     end
@@ -72,19 +74,8 @@ def rps_game_winner(game)
   end
 end
 
-bracket = [
-           [
-            [["Armando", "P"], ["Dave", "S"]],
-            [["Richard", "R"], ["Michael", "S"]],
-           ],
-           [
-            [["Allen", "S"], ["Omer", "P"]],
-            [["David E.", "R"], ["Richard X.", "P"]]
-           ]
-          ]
 
 
-#puts rps_tournament_winner(bracket)
 
 def rps_tournament_winner(bracket)
   if (bracket[0][0].is_a?(String))
@@ -96,10 +87,35 @@ def rps_tournament_winner(bracket)
   return rps_game_winner(newBracket)
 end
 
+def combine_anagrams(words)
+  inOrder = words.group_by { |word|
+    word.downcase.chars.sort
+  }
+  inOrder.values
+end
+
+words = ['cars', 'for', 'potatoes', 'racs', 'four', 'scar', 'creams', 'scream']
+
+print (combine_anagrams(words))
+
+bracket = [
+           [
+            [["Armando", "P"], ["Dave", "S"]],
+            [["Richard", "R"], ["Michael", "S"]],
+           ],
+           [
+            [["Allen", "S"], ["Omer", "P"]],
+            [["David E.", "R"], ["Richard X.", "P"]]
+           ]
+          ]
+
+#puts rps_tournament_winner(bracket)
+
+
 #puts rps_game_winner([ ["Armando", "S"], ["Dave", "R"] ])
 
-count_words("A man, a plan, a canal -- Panama")
-count_words("doo bee doo bee doo")
+#count_words("A man, a plan, a canal -- Panama")
+#count_words("doo bee doo bee doo")
 
 
 #hello = HelloWorldClass.new("jeffrey gunderson")
