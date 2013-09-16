@@ -37,6 +37,20 @@ class Numeric
  end
 end
 
+class String
+  def palindrome?
+    string = self.to_s.downcase.gsub(/[^a-zA-Z]/, '')
+    string === string.reverse
+  end
+end
+
+
+=begin
+p "foo".palindrome?
+p "level".palindrome?
+p "A man, a plan, a canal -- Panama".palindrome?
+p "madam, I'm Adam!".palindrome?
+p "Abracadabra".palindrome?
 
 p 5.dollars.in(:euros)
 p 5.euros.in(:rupees)
@@ -52,3 +66,4 @@ f = Foo.new
 f.bar = 1
 p f.bar_history
 
+=end
