@@ -50,11 +50,29 @@ module Enumerable
   end
 end
 
+class CartesianProduct
+  include Enumerable
+  def initialize(arry1=[], arry2=[])
+    @arry1 = arry1
+    @arry2 = arry2
+  end
+  def each
+    @arry1.each do |n|
+      @arry2.eac do |z|
+        yield ([n, z])
+      end
+    end
+  end
+end
+
+c = CartesianProduct.new([:a,:b][4,5])
+c.each {|elt| p elt.inspect}
+=begin
 p [1,2,3,2,1].palindrome?
 p [1,2,3,4,5].palindrome?
 test = {"Jane Doe" => "10", "Johnny B" => "5"}
 p test.palindrome?
-=begin
+
 p "foo".palindrome?
 p "level".palindrome?
 p "A man, a plan, a canal -- Panama".palindrome?
