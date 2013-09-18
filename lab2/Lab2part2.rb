@@ -44,7 +44,16 @@ class String
   end
 end
 
+module Enumerable
+  def palindrome?
+    self == self.reverse_each.map {|v| v}
+  end
+end
 
+p [1,2,3,2,1].palindrome?
+p [1,2,3,4,5].palindrome?
+test = {"Jane Doe" => "10", "Johnny B" => "5"}
+p test.palindrome?
 =begin
 p "foo".palindrome?
 p "level".palindrome?
