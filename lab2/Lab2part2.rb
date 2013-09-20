@@ -1,3 +1,5 @@
+#Jeffrey Gunderson
+
 class Class
   def attr_accessor_with_history(attr_name)
     attr_name = attr_name.to_s
@@ -58,14 +60,17 @@ class CartesianProduct
   end
   def each
     @arry1.each do |n|
-      @arry2.eac do |z|
+      @arry2.each do |z|
         yield ([n, z])
       end
     end
   end
 end
 
-c = CartesianProduct.new([:a,:b][4,5])
+c = CartesianProduct.new([:a,:b],[4,5])
+c.each {|elt| p elt.inspect}
+
+c = CartesianProduct.new([:a,:b],[])
 c.each {|elt| p elt.inspect}
 =begin
 p [1,2,3,2,1].palindrome?
