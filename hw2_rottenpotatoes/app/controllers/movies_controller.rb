@@ -9,8 +9,9 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
     order = params[:type]
-    @movies = Movie.find(:all, :order => "title") if order == "title"
-    @movies = Movie.find(:all, :order => "release_date") if order == "date"
+    @movies = Movie.find(:all, :order => order) if defined? order
+    # @movies = Movie.find(:all, :order => "title") if order == "title"
+    # @movies = Movie.find(:all, :order => "release_date") if order == "date"
   end
 
   def new
