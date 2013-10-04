@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def index
-
+    @all_ratings = Movie.select("DISTINCT rating").map(&:rating)
     @movies = Movie.all
     order = params[:type]
     @titleClass = "hilite" if order == "title"
