@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-
+  include ApplicationHelper
   def show
     id = params[:id] # retrieve movie ID from URI route
     @movie = Movie.find(id) # look up movie by unique ID
@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def index
+
     @movies = Movie.all
     order = params[:type]
     @movies = Movie.find(:all, :order => order) if defined? order
