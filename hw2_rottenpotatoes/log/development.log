@@ -857,3 +857,154 @@ ActionView::Template::Error (undefined method `titleClass' for nil:NilClass):
 Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
 Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
 Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.9ms)
+
+
+Started GET "/movies/" for 127.0.0.1 at 2013-10-04 15:01:41 -0600
+  Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "movies".* FROM "movies" 
+Rendered movies/index.html.haml within layouts/application (3.6ms)
+Completed 500 Internal Server Error in 16ms
+
+ActionView::Template::Error (undefined method `titleClass' for nil:NilClass):
+    4: %table#movies
+    5:   %thead
+    6:     %tr
+    7:       %th{ :class => - @controller.titleClass}= link_to "Movie Title", sort_path("title")
+    8:       %th Rating
+    9:       %th{ :class => - @controller.dateClass}= link_to "Release Date", sort_path("release_date")
+    10:       %th More Info
+  app/views/movies/index.html.haml:7:in `_app_views_movies_index_html_haml___3531438855656387002_36455780'
+
+Rendered /home/gunderjt/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+Rendered /home/gunderjt/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+Rendered /home/gunderjt/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.4ms)
+
+
+Started GET "/movies/" for 127.0.0.1 at 2013-10-04 15:08:02 -0600
+  Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "movies".* FROM "movies" 
+Rendered movies/index.html.haml within layouts/application (23.8ms)
+Completed 200 OK in 53ms (Views: 50.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-04 15:08:02 -0600
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-04 15:08:02 -0600
+Served asset /application.js - 200 OK (16ms)
+
+
+Started GET "/movies/sort/title" for 127.0.0.1 at 2013-10-04 15:08:07 -0600
+  Processing by MoviesController#index as HTML
+  Parameters: {"type"=>"title"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+Completed 500 Internal Server Error in 25ms
+
+NameError (undefined local variable or method `hilite' for #<MoviesController:0x000000040ceb40>):
+  app/controllers/movies_controller.rb:13:in `index'
+
+Rendered /home/gunderjt/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /home/gunderjt/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /home/gunderjt/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (61.7ms)
+
+
+Started GET "/movies/sort/title" for 127.0.0.1 at 2013-10-04 15:10:37 -0600
+  Processing by MoviesController#index as HTML
+  Parameters: {"type"=>"title"}
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+Completed 500 Internal Server Error in 33ms
+
+NameError (undefined local variable or method `hilite' for #<MoviesController:0x000000038da7e0>):
+  app/controllers/movies_controller.rb:13:in `index'
+
+Rendered /home/gunderjt/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /home/gunderjt/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /home/gunderjt/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.5ms)
+
+
+Started GET "/movies/sort/title" for 127.0.0.1 at 2013-10-04 15:11:45 -0600
+  Processing by MoviesController#index as HTML
+  Parameters: {"type"=>"title"}
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" ORDER BY title
+Rendered movies/index.html.haml within layouts/application (23.1ms)
+Completed 200 OK in 44ms (Views: 40.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-04 15:11:45 -0600
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-04 15:11:45 -0600
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/movies/sort/release_date" for 127.0.0.1 at 2013-10-04 15:11:55 -0600
+  Processing by MoviesController#index as HTML
+  Parameters: {"type"=>"release_date"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" ORDER BY release_date
+Rendered movies/index.html.haml within layouts/application (11.9ms)
+Completed 200 OK in 19ms (Views: 16.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-04 15:11:55 -0600
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-04 15:11:55 -0600
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/movies/sort/title" for 127.0.0.1 at 2013-10-04 15:12:48 -0600
+  Processing by MoviesController#index as HTML
+  Parameters: {"type"=>"title"}
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" ORDER BY title
+Rendered movies/index.html.haml within layouts/application (21.9ms)
+Completed 200 OK in 44ms (Views: 39.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-04 15:12:49 -0600
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-04 15:12:49 -0600
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/movies/sort/release_date" for 127.0.0.1 at 2013-10-04 15:12:51 -0600
+  Processing by MoviesController#index as HTML
+  Parameters: {"type"=>"release_date"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" ORDER BY release_date
+Rendered movies/index.html.haml within layouts/application (13.2ms)
+Completed 200 OK in 20ms (Views: 17.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-04 15:12:51 -0600
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-04 15:12:51 -0600
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/movies/sort/title" for 127.0.0.1 at 2013-10-04 15:12:55 -0600
+  Processing by MoviesController#index as HTML
+  Parameters: {"type"=>"title"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" ORDER BY title
+Rendered movies/index.html.haml within layouts/application (16.4ms)
+Completed 200 OK in 24ms (Views: 21.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-04 15:12:55 -0600
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-04 15:12:55 -0600
+Served asset /application.js - 304 Not Modified (0ms)

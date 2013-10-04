@@ -10,6 +10,9 @@ class MoviesController < ApplicationController
 
     @movies = Movie.all
     order = params[:type]
+    @titleClass = "hilite" if order == "title"
+    @dateClass = "hilite" if order == "release_date"
+
     @movies = Movie.find(:all, :order => order) if defined? order
     # @movies = Movie.find(:all, :order => "title") if order == "title"
     # @movies = Movie.find(:all, :order => "release_date") if order == "date"
