@@ -7,13 +7,19 @@ class MoviesController < ApplicationController
   end
 
   def index
+    debugger
     @all_ratings = Movie.select("DISTINCT rating").map(&:rating)
     @movies = Movie.all
-    order = params[:type]
+    searchArgs = Hash.new
+    showRatings = params[:ratings].keys if defined? params[:ratings]
+    order = params[:type] if defined? params[:type]
+    searchArgs[:order] = order if defined? order
+    searchArgs[:conditions] = [" ratings = ? ", showRatings] if defined? showRatings
+    @movies = Movie.all(searchArgs)
     @titleClass = "hilite" if order == "title"
     @dateClass = "hilite" if order == "release_date"
-
-    @movies = Movie.find(:all, :order => order) if defined? order
+    # order = params[:type]
+    # @movies = Movie.find(:all, :order => order) if defined? order
     # @movies = Movie.find(:all, :order => "title") if order == "title"
     # @movies = Movie.find(:all, :order => "release_date") if order == "date"
   end
@@ -46,4 +52,13 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+  def filter
+    searchArgs = Hash.new
+    showRatings = params[:ratings].keys
+    order = params[:type]
+    searchArgs[:order] = order if defined? order
+    searchArgs[:conditions] = [" ratings = ? ", showRatings] if defined? showRatings
+   # @movies = Movie.where("ratings = ?", showRatings)
+    @movies = Movie.all(searchArgs)
+  end
 end

@@ -1385,3 +1385,58 @@ Served asset /application.css - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-04 17:25:04 -0700
 Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2013-10-04 22:21:12 -0700
+
+SyntaxError (/home/ubuntu/cs/csmethods/hw2_rottenpotatoes/app/controllers/movies_controller.rb:16: syntax error, unexpected '}', expecting tASSOC
+...[" ratings = ? ", showRatings]} if defined? showRatings
+...                               ^
+/home/ubuntu/cs/csmethods/hw2_rottenpotatoes/app/controllers/movies_controller.rb:59: syntax error, unexpected '}', expecting tASSOC
+...[" ratings = ? ", showRatings]} if defined? showRatings
+...                               ^):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.2ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.7ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2013-10-04 22:22:08 -0700
+
+SyntaxError (/home/ubuntu/cs/csmethods/hw2_rottenpotatoes/app/controllers/movies_controller.rb:60: syntax error, unexpected '}', expecting tASSOC
+...[" ratings = ? ", showRatings]} if defined? showRatings
+...                               ^):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.2ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.8ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2013-10-04 22:22:53 -0700
+  Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT DISTINCT rating FROM "movies" [0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies" 
+Completed 500 Internal Server Error in 94715ms
+
+NoMethodError (undefined method `keys' for nil:NilClass):
+  app/controllers/movies_controller.rb:14:in `index'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.2ms)
+
+
+Started GET "/movies/" for 127.0.0.1 at 2013-10-04 22:28:47 -0700
+  Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT DISTINCT rating FROM "movies" [0m
+  [1m[35mMovie Load (23.1ms)[0m  SELECT "movies".* FROM "movies" 
+Completed 500 Internal Server Error in 61094ms
+
+NoMethodError (undefined method `keys' for nil:NilClass):
+  app/controllers/movies_controller.rb:14:in `index'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.3ms)
