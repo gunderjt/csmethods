@@ -14,7 +14,7 @@ Rottenpotatoes::Application.routes.draw do
   #   resources :products
   resources :movies
 
-  get 'movies/sort/:type' => 'movies#index', as: :sort
+ # get 'movies/sort/:type' => 'movies#index'
   # Sample resource route with options:
   #   resources :products do
   #     member do
