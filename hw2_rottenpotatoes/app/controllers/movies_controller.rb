@@ -7,24 +7,24 @@ class MoviesController < ApplicationController
   end
 
   def index
-
+    
     @all_ratings = Movie.select("DISTINCT rating").map(&:rating)
-    @movies = Movie.all
+    # @movies = Movie.all
     searchArgs = Hash.new
     order = ""
+    # if sessions exists and params doesn't have keys :ratings or :sort
+    # AND params :ratings exists but doesn't have any keys, redirect_to the 
+    # movie_link_path(:ratings => session[:ratings], :sort => session[:sort])
+    # don't forget your flash.keep before redirect
     if params.has_key?(:ratings)
       showRatings = params[:ratings].keys
       searchArgs[:conditions] = [" rating in (?) ", showRatings]
     end
     searchArgs[:order] = params[:sort] if params.has_key?(:sort)
-#    debugger
     @movies = Movie.find(:all, searchArgs)
     @titleClass = "hilite" if params[:sort] == "title"
     @dateClass = "hilite" if params[:sort] == "release_date"
-    # order = params[:type]
-    # @movies = Movie.find(:all, :order => order) if defined? order
-    # @movies = Movie.find(:all, :order => "title") if order == "title"
-    # @movies = Movie.find(:all, :order => "release_date") if order == "date"
+    # save the filter and sort parameters in session[]
   end
 
   def new
