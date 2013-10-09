@@ -39,7 +39,7 @@ class MoviesController < ApplicationController
     end
     if (no_redirect == 0 && (session.has_key?(:sort) || session.has_key?(:ratings)))
       flash.keep
-      redirect_to movie_path(:sort => session[:sort], :ratings => session[:ratings])
+      redirect_to movies_path(:sort => session[:sort], :ratings => session[:ratings])
     end
     @movies = Movie.find(:all, searchArgs)
     @titleClass = "hilite" if params[:sort] == "title"
