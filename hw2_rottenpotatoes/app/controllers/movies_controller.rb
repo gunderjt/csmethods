@@ -7,44 +7,48 @@ class MoviesController < ApplicationController
   end
 
   def index
-    #debugger
-    @all_ratings = Movie.select("DISTINCT rating").map {|i| i.rating}
 
     searchArgs = Hash.new
     redirectArgs = Hash.new
     order = ""
-    no_redirect = 0
+    redirect = true
 
-    # if sessions exists and params doesn't have keys :ratings or :sort
-    # AND params :ratings exists but doesn't have any keys, redirect_to the
-    # movie_link_path(:ratings => session[:ratings], :sort => session[:sort])
-    # don't forget your flash.keep before redirect
-    #    if params.has_key?(:ratings)
+    #get all the rating types that are in the database
+    @all_ratings = Movie.select("DISTINCT rating").map {|i| i.rating}
+
+    #check to see if user has entered in ratings: if so then
+    #save it in the session, and make sure the flag indicates that
+    #there should be no redirect, also delete other keys
     if params[:ratings]
       showRatings = params[:ratings].keys
       searchArgs[:conditions] = [" rating in (?) ", showRatings]
       session[:ratings] = params[:ratings]
       session.delete(:sort)
-      no_redirect = 1
+      redirect = false
     end
-    #    if params.has_key?(:sort)
+
+    #check to see if user has entered in a sorting type: if so then
+    #save it in the session, and make sure the flag indicates that
+    #there should be no redirect
     if params[:sort]
-#      debugger
       searchArgs[:order] = params[:sort]
       session[:sort] = params[:sort]
       unless params.has_key?(:ratings)
         session.delete(:ratings)
       end
-      no_redirect = 1
+      redirect = false
     end
-    if (no_redirect == 0 && (session.has_key?(:sort) || session.has_key?(:ratings)))
+
+    #if user didn't enter in any parameters, check to see if there are
+    #saved parameters and then redirect to that
+    if (redirect && (session.has_key?(:sort) || session.has_key?(:ratings)))
       flash.keep
       redirect_to movies_path(:sort => session[:sort], :ratings => session[:ratings])
     end
+    #else render the view page as normal
     @movies = Movie.find(:all, searchArgs)
-    @titleClass = "hilite" if params[:sort] == "title"
-    @dateClass = "hilite" if params[:sort] == "release_date"
-    # save the filter and sort parameters in session[]
+    #look in the ApplicationHelper folder for this code
+    highliter(params[:sort]) if params.has_key?(:sort)
   end
 
   def new
